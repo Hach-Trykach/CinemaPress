@@ -77,7 +77,7 @@ docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
         if [ "`basename "${0}"`" != "cinemapress" ] || [ "${1}" != "" ]; then
             echo ""; echo -n "☐ Downloading cinemapress.sh ...";
-            wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh -o /dev/null && \
+            wget -qO /usr/bin/cinemapress https://raw.githubusercontent.com/Hach-Trykach/CinemaPress/master/cinemapress.sh -o /dev/null && \
             chmod +x /usr/bin/cinemapress
             echo -e "\\r${G}✓ Downloading cinemapress.sh ...${NC}"
             echo -n "☐ Installing packages ..."
@@ -357,7 +357,7 @@ ip_install() {
             cinemapress >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
     fi
 
-    # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
+    # docker build -t cinemapress/docker https://github.com/Hach-Trykach/CinemaPress.git
     docker pull cinemapress/docker:latest >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
     docker run \
@@ -408,9 +408,9 @@ ip_install() {
         if [ "${CP_IP}" = "domain" ] \
         && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
         && [ "`netstat -tunlp | grep :::80`" = "" ]; then
-            # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
-            # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
-            # docker build -t cinemapress/filestash https://github.com/CinemaPress/CinemaPress.git#:config/default/filestash
+            # docker build -t cinemapress/nginx https://github.com/Hach-Trykach/CinemaPress.git#:config/default/nginx
+            # docker build -t cinemapress/fail2ban https://github.com/Hach-Trykach/CinemaPress.git#:config/default/fail2ban
+            # docker build -t cinemapress/filestash https://github.com/Hach-Trykach/CinemaPress.git#:config/default/filestash
 
             BOTS=()
             if [ ! -f "/etc/nginx/bots.d/blockbots.conf" ] \
@@ -1147,7 +1147,7 @@ ip_install() {
     fi
     docker stop ${LOCAL_DOMAIN_} >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     docker rm -f ${LOCAL_DOMAIN_} >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-    # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
+    # docker build -t cinemapress/docker https://github.com/Hach-Trykach/CinemaPress.git
     docker pull cinemapress/docker:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     sed -i "s/.*${LOCAL_DOMAIN}.*//g" /etc/crontab &> /dev/null
     rm -rf /home/${LOCAL_DOMAIN:?}
@@ -1158,21 +1158,21 @@ ip_install() {
         echo "RM NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker rm -f nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         echo "PULL NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
+        # docker build -t cinemapress/nginx https://github.com/Hach-Trykach/CinemaPress.git#:config/default/nginx
         docker pull cinemapress/nginx:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "STOP FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker stop fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "RM FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "PULL FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-#        # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
+#        # docker build -t cinemapress/fail2ban https://github.com/Hach-Trykach/CinemaPress.git#:config/default/fail2ban
 #        docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "STOP FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker stop filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "RM FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker rm -f filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "PULL FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-#        # docker build -t cinemapress/filestash https://github.com/CinemaPress/CinemaPress.git#:config/default/filestash
+#        # docker build -t cinemapress/filestash https://github.com/Hach-Trykach/CinemaPress.git#:config/default/filestash
 #        docker pull cinemapress/filestash:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
     echo "RMI OLD" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
@@ -3856,7 +3856,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ "${CP_IP}" = "domain" ] \
                 && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
                 && [ "`netstat -tunlp | grep :::80`" = "" ]; then
-                    # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
+                    # docker build -t cinemapress/nginx https://github.com/Hach-Trykach/CinemaPress.git#:config/default/nginx
 
                     docker run \
                         -d \

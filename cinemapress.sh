@@ -2657,10 +2657,10 @@ success_install(){
     _s
 }
 
-if [ ${EUID} -ne 0 ]; then
-	printf "${R}WARNING:${NC} Run as root user! \n${NC}"
-	exit 1
-fi
+# if [ ${EUID} -ne 0 ]; then
+# 	printf "${R}WARNING:${NC} Run as root user! \n${NC}"
+# 	exit 1
+# fi
 
 if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ] || \
    [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ] || \
@@ -4479,8 +4479,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 rm -rf "${actor_dir}"
             fi
             for l in {1..10}; do
-                start=$(( l * 310000 - 309999 ))
-                stop=$(( l * 310000 ))
+                start=$(( l * 3100000 - 3099999 ))
+                stop=$(( l * 3100000 ))
                 ( for (( i=start; i<=stop; i++ )); do
                     people_url="${api//id/${i}}"
                     people="${json_dir}/${i}.json"

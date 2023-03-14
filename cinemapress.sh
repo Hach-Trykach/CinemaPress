@@ -907,7 +907,7 @@ ip_install() {
     _content
     _content "Update movies information"
     _content "using the instructions:"
-    _content "https://enota.club/threads/3043"
+    _content "https://forum.cinemapress.su"
     _content
     _s
     exit 0

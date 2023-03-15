@@ -317,7 +317,7 @@ ip_install() {
     elif [ "`expr "${IP3}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP3}"; fi
     CP_IP="ip"
     CP_LANG="${1}"
-    CP_THEME="hodor"
+    CP_THEME="tarly"
     CP_PASSWD="test"
     sh_yes
     _s
@@ -1345,7 +1345,7 @@ read_theme() {
             if [ "${CP_THEME}" = "" ]
             then
                 AGAIN=10
-                CP_THEME='hodor'
+                CP_THEME='tarly'
                 echo ": ${CP_THEME}"
             else
                 if [ "${CP_THEME}" = "default" ] || [ "${CP_THEME}" = "hodor" ] || [ "${CP_THEME}" = "sansa" ] || [ "${CP_THEME}" = "robb" ] || [ "${CP_THEME}" = "ramsay" ] || [ "${CP_THEME}" = "tyrion" ] || [ "${CP_THEME}" = "cersei" ] || [ "${CP_THEME}" = "joffrey" ] || [ "${CP_THEME}" = "drogo" ] || [ "${CP_THEME}" = "bran" ] || [ "${CP_THEME}" = "arya" ] || [ "${CP_THEME}" = "mormont" ] || [ "${CP_THEME}" = "tarly" ] || [ "${CP_THEME}" = "daenerys" ] || [ "${CP_THEME}" = "tormund" ] || [ "${CP_THEME}" = "snow" ] || [ "${CP_THEME}" = "dustin" ]

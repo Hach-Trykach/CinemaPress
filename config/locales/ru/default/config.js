@@ -166,10 +166,10 @@ module.exports = {
       "# Перенос фильмов в ОЗУ",
       "# 0 ~ xmlpipe2 ~ ~ ~ kp_id <> kp_id ~ title_ru <> title_ru ~ title_en <> title_en ~ description <> description ~ poster <> poster ~ \"2025-06-29\" <> custom.updated_at"
 		],
-		"proxy": [],
-		"cookies": "",
-		"skip": [],
-		"id": "kp_id"
+    "proxy": [],
+    "cookies": "",
+    "skip": [],
+    "id": "kp_id"
   },
   "codes": {
     "head": "",

@@ -165,7 +165,7 @@ module.exports = {
       "0 ~ db ~ kp_id ~ https://rating.kinopoisk.ru/[id].xml ~ rating.kp_rating._attributes.num_vote <> kp_vote ~ rating.kp_rating._text <> kp_rating ~ rating.imdb_rating._attributes.num_vote <> imdb_vote ~ rating.imdb_rating._text <> imdb_rating",
       "# Перенос фильмов в ОЗУ",
       "# 0 ~ xmlpipe2 ~ ~ ~ kp_id <> kp_id ~ title_ru <> title_ru ~ title_en <> title_en ~ description <> description ~ poster <> poster ~ \"2025-06-29\" <> custom.updated_at"
-		],
+    ],
     "proxy": [],
     "cookies": "",
     "skip": [],

@@ -156,7 +156,8 @@ router.get('/:tab', function(req, res) {
     err = 'HASH is incorrect.';
   }
   if (err) {
-    return res.status(404).json({ status: 'error', message: err });
+    // return res.status(404).json({ status: 'error', message: err });
+    res.status(404).json({ status: 'error', message: err });
   }
   var results = [];
   async.eachOfLimit(

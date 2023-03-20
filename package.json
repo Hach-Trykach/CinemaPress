@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CinemaPress/CinemaPress.git"
+    "url": "https://github.com/Hach-Trykach/CinemaPress.git"
   },
   "bugs": {
-    "url": "https://github.com/CinemaPress/CinemaPress/issues"
+    "url": "https://github.com/Hach-Trykach/CinemaPress/issues"
   },
-  "homepage": "https://github.com/CinemaPress/CinemaPress",
+  "homepage": "https://github.com/Hach-Trykach/CinemaPress",
   "dependencies": {
     "pm2": "5.1.2",
     "whois": "2.13.5",

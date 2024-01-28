@@ -77,7 +77,7 @@ docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
         if [ "`basename "${0}"`" != "cinemapress" ] || [ "${1}" != "" ]; then
             echo ""; echo -n "☐ Downloading cinemapress.sh ...";
-            wget -qO /usr/bin/cinemapress https://raw.githubusercontent.com/Hach-Trykach/CinemaPress/master/cinemapress.sh -o /dev/null && \
+            wget -qO /usr/bin/cinemapress https://raw.githubusercontent.com/hdrezkaby/CinemaPress/master/cinemapress.sh -o /dev/null && \
             chmod +x /usr/bin/cinemapress
             echo -e "\\r${G}✓ Downloading cinemapress.sh ...${NC}"
             echo -n "☐ Installing packages ..."

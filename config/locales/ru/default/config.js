@@ -1,4 +1,4 @@
-module.exports = {
+﻿module.exports = {
   "database": {
     "host": "localhost",
     "port": 3306,
@@ -151,6 +151,7 @@ module.exports = {
   },
   "movies": {
     "cron": [
+<<<<<<< HEAD
       "# Заполнение с API Collaps",
       "0 ~ https://api1653399847.bhcesh.me/list?token=4c250f7ac0a8c8a658c789186b9a58a5&limit=99 ~ results.0.id ~ https://apicollaps.cc/franchise/details?token=4c250f7ac0a8c8a658c789186b9a58a5&id=[id] ~ kinopoisk_id <> kp_id ~ imdb_id <> custom.imdb_id ~ name <> title_ru ~ name_eng <> title_en ~ year <> year ~ type <> type ~ quality <> quality ~ premier <> premiere ~ description <> description ~ country <> country <> <> <> Object.values(_OBJECT_) ~ genre <> genre <> <> <> Object.values(_OBJECT_) ~ director.0 <> director ~ actors.0 <> actor <> 5 ~ actors_dubl.0 <> custom.actors_dubl <> 5 ~ voiceActing <> translate <> 1 ~ id <> custom.movie_id ~ world_art_id <> custom.wa_id ~ \"1\" <> poster ~ type <> custom.type",
       "# Заполнение с API Kodik",
@@ -170,6 +171,27 @@ module.exports = {
     "cookies": "",
     "skip": [],
     "id": "kp_id"
+=======
+			"# Заполнение с API Collaps",
+			"0 ~ https://api1653399847.bhcesh.me/list?token=4c250f7ac0a8c8a658c789186b9a58a5&limit=99 ~ results.0.id ~ https://apicollaps.cc/franchise/details?token=4c250f7ac0a8c8a658c789186b9a58a5&id=[id] ~ kinopoisk_id <> kp_id ~ imdb_id <> custom.imdb_id ~ name <> title_ru ~ name_eng <> title_en ~ year <> year ~ type <> type ~ quality <> quality ~ premier <> premiere ~ description <> description ~ country <> country <> <> <> Object.values(_OBJECT_) ~ genre <> genre <> <> <> Object.values(_OBJECT_) ~ director.0 <> director ~ actors.0 <> actor <> 5 ~ actors_dubl.0 <> custom.actors_dubl <> 5 ~ voiceActing <> translate <> 1 ~ id <> custom.movie_id ~ world_art_id <> custom.wa_id ~ \"1\" <> poster ~ type <> custom.type",
+			"# Заполнение с API Kodik",
+			"0 ~ http://kodikapi.com/list?limit=100&with_material_data=true&token=41dd95f84c21719b09d6c71182237a25 ~ results ~ ~ kinopoisk_id <> kp_id ~ material_data.title <> title_ru ~ material_data.title_en <> title_en ~ material_data.year <> year ~ material_data.description <> description ~ material_data.poster_url <> poster ~ material_data.screenshots <> pictures ~ material_data.countries <> country ~ material_data.genres <> genre ~ material_data.premiere_world <> premiere ~ material_data.actors <> actor ~ material_data.directors <> director ~ type <> type",
+			"# Заполнение с API Alloha фильмы",
+			"0 ~ https://api.alloha.tv/?token=de19b0b4e75ce15a9be8e63c0f5858&order=date&list=movie ~ data.0.id_kp ~ https://api.alloha.tv/?token=04941a9a3ca3ac16e2b4327347bbc1&kp=[id] ~ data.id_kp <> kp_id ~ data.id_imdb <> custom.imdb_id ~ data.id_tmdb <> custom.tmdb_id ~ data.id_world_art <> custom.wa_id ~ data.name <> title_ru ~ data.original_name <> title_en ~ data.year <> year ~ \"movie\" <> type ~ data.quality <> quality <> 1 <> <> \"_VALUE_\".split(\",\") ~ data.translation <> translate <> 1 <> <> \"_VALUE_\".split(\",\") ~ data.premiere <> premiere ~ data.description <> description ~ data.country <> country ~ data.genre <> genre <> <> <> \"_VALUE_\".split(\",\") ~ data.directors <> director <> <> <> \"_VALUE_\".split(\",\") ~ data.actors <> actor <> 5 <> <> \"_VALUE_\".split(\",\") ~ \"1\" <> poster",
+			"# Заполнение с API Alloha сериалы",
+			"0 ~ https://api.alloha.tv/?token=de19b0b4e75ce15a9be8e63c0f5858&order=date&list=serial ~ data.0.id_kp ~ https://api.alloha.tv/?token=04941a9a3ca3ac16e2b4327347bbc1&kp=[id] ~ data.id_kp <> kp_id ~ data.id_imdb <> custom.imdb_id ~ data.id_tmdb <> custom.tmdb_id ~ data.id_world_art <> custom.wa_id ~ data.name <> title_ru ~ data.original_name <> title_en ~ data.year <> year ~ \"serial\" <> type ~ data.quality <> quality <> 1 <> <> \"_VALUE_\".split(\",\") ~ data.translation <> translate <> 1 <> <> \"_VALUE_\".split(\",\") ~ data.premiere <> premiere ~ data.description <> description ~ data.country <> country ~ data.genre <> genre <> <> <> \"_VALUE_\".split(\",\") ~ data.directors <> director <> <> <> \"_VALUE_\".split(\",\") ~ data.actors <> actor <> 5 <> <> \"_VALUE_\".split(\",\") ~ \"1\" <> poster",
+			"# Заполнение с API Bazon",
+			"0 ~ https://bazon.cc/api/json/?token=d0623f3ffd0d8c3d6352bbf2695c61de&type=all ~ results.0.kinopoisk_id ~ https://bazon.cc/api/search?token=d0623f3ffd0d8c3d6352bbf2695c61de&kp=[id] ~ results.0.kinopoisk_id <> kp_id <> 1 ~ results.0.info.rus <> title_ru <> 1 ~ results.0.info.orig <> title_en <> 1 ~ results.0.info.year <> year <> 1 ~ results.0.serial <> type <> 1 ~ results.0.quality <> quality <> 1 ~ results.0.translation <> translate <> 1 ~ results.0.info.premiere <> premiere <> 1 ~ results.0.last_season <> custom.last_season <> 1 ~ results.0.last_episode <> custom.last_episode <> 1 ~ results.0.end <> custom.end <> 1 ~ results.0.info.description <> description <> 1 ~ results.0.info.country <> country <> 1 ~ results.0.info.genre <> genre <> 1 ~ results.0.info.director <> director <> 1 ~ results.0.info.actors <> actor <> 1 ~ results.0.info.poster <> poster <> 1",
+			"# Заполнение рейтинга КиноПоиск и IMDb, напрямую с КиноПоиска.",
+			"0 ~ db ~ kp_id ~ https://rating.kinopoisk.ru/[id].xml ~ rating.kp_rating._attributes.num_vote <> kp_vote ~ rating.kp_rating._text <> kp_rating ~ rating.imdb_rating._attributes.num_vote <> imdb_vote ~ rating.imdb_rating._text <> imdb_rating",
+			"# Перенос фильмов в ОЗУ",
+			"# 0 ~ xmlpipe2 ~ ~ ~ kp_id <> kp_id ~ title_ru <> title_ru ~ title_en <> title_en ~ description <> description ~ poster <> poster ~ \"2025-06-29\" <> custom.updated_at"
+		],
+		"proxy": [],
+		"cookies": "",
+		"skip": [],
+		"id": "kp_id"
+>>>>>>> 24e36d857fe280705017871127b53da885a55356
   },
   "codes": {
     "head": "",

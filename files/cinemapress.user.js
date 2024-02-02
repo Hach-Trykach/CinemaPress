@@ -6,8 +6,8 @@
 // @description:ru Кнопка автозаполнения информации о фильме в CinemaPress.
 // @description:zh CinemaPress电影信息自动完成按钮。
 // @author CinemaPress
-// @homepageURL https://github.com/CinemaPress
-// @supportURL https://github.com/CinemaPress/CinemaPress/issues
+// @homepageURL https://github.com/hdrezkaby
+// @supportURL https://github.com/hdrezkaby/CinemaPress/issues
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
 // @version 2021.01
@@ -130,7 +130,7 @@ function parseData() {
             (!imdb_id && !tmdb_id && !douban_id && !tvmaze_id && !wa_id))
     ) {
         urls.push(
-            'https://api1573848848.apicollaps.cc/franchise/details?' +
+            'https://api.apicollaps.cc/franchise/details?' +
             'token=eedefb541aeba871dcfc756e6b31c02e&' +
             'kinopoisk_id=' +
             kp_id
@@ -433,14 +433,12 @@ function getAPI(url, callback) {
                                     kp_vote: kp.attributes &&
                                         kp.attributes[0] &&
                                         kp.attributes[0].textContent ?
-                                        kp.attributes[0].textContent :
-                                        '0',
+                                        kp.attributes[0].textContent : '0',
                                     imdb_rating: Math.ceil(parseFloat(imdb.textContent) * 10) || 0,
                                     imdb_vote: imdb.attributes &&
                                         imdb.attributes[0] &&
                                         imdb.attributes[0].textContent ?
-                                        imdb.attributes[0].textContent :
-                                        '0'
+                                        imdb.attributes[0].textContent : '0'
                                 };
                             }
                         } else if (url.indexOf('bazon.cc') + 1) {
@@ -497,21 +495,16 @@ function parseTMDb(res) {
         title_ru: res.title ? res.title : res.name ? res.name : '',
         title_en: res.original_title ? res.original_title : '',
         year: res.release_date ?
-            res.release_date.substring(0, 4) :
-            res.first_air_date ?
-            res.first_air_date.substring(0, 4) :
-            '',
+            res.release_date.substring(0, 4) : res.first_air_date ?
+            res.first_air_date.substring(0, 4) : '',
         premiere: res.release_date ?
-            res.release_date :
-            res.first_air_date ?
-            res.first_air_date :
-            '',
+            res.release_date : res.first_air_date ?
+            res.first_air_date : '',
         type: res.number_of_seasons ? '1' : '0',
         genre: (res.genres ?
             res.genres.map(function(v) {
                 return v.name;
-            }) :
-            []
+            }) : []
         ).join(','),
         country: (res.production_countries ?
             res.production_countries.map(function(v) {
@@ -520,14 +513,12 @@ function parseTMDb(res) {
             res.origin_country ?
             res.origin_country.map(function(v) {
                 return v;
-            }) :
-            []
+            }) : []
         ).join(','),
         actor: (res.credits && res.credits.cast ?
                 res.credits.cast.map(function(v, i) {
                     return i < 10 ? v.name : null;
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
@@ -538,8 +529,7 @@ function parseTMDb(res) {
                 res.credits && res.credits.crew ?
                 res.credits.crew.map(function(v) {
                     return v.job === 'Director' ? v.name : null;
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
@@ -557,8 +547,7 @@ function parseOMDb(res) {
     return {
         title_en: res.Title && res.Title !== 'N/A' ? res.Title : '',
         year: res.Year && res.Year !== 'N/A' ?
-            (res.Year + '').split('-')[0].replace(/[^0-9]/g, '') :
-            '',
+            (res.Year + '').split('-')[0].replace(/[^0-9]/g, '') : '',
         premiere: (res.Released && res.Released !== 'N/A' ?
                 month.map(function(y, i) {
                     if (res.Released.indexOf(y) === -1) return null;
@@ -566,8 +555,7 @@ function parseOMDb(res) {
                     if (d && d.length !== 2) return null;
                     var mon = i + 1 < 10 ? '0' + (i + 1) : i + 1;
                     return d[1].trim() + '-' + mon + '-' + d[0].trim();
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(''),
@@ -575,20 +563,17 @@ function parseOMDb(res) {
         genre: (res.Genre && res.Genre !== 'N/A' ?
             res.Genre.split(',').map(function(v) {
                 return v.trim();
-            }) :
-            []
+            }) : []
         ).join(','),
         country: (res.Country && res.Country !== 'N/A' ?
             res.Country.split(',').map(function(v) {
                 return v.trim();
-            }) :
-            []
+            }) : []
         ).join(','),
         actor: (res.Actors && res.Actors !== 'N/A' ?
                 res.Actors.split(',').map(function(v, i) {
                     return i < 10 ? v.trim() : null;
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
@@ -599,21 +584,17 @@ function parseOMDb(res) {
                 res.Writer && res.Writer !== 'N/A' ?
                 res.Writer.split(',').map(function(v, i) {
                     return i < 10 ? v.trim() : null;
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
         description: res.Plot && res.Plot !== 'N/A' ? res.Plot : '',
         poster: res.Poster && res.Poster !== 'N/A' ?
-            res.Poster.replace(/.*?(\/[a-z0-9]*@).*/i, '$1') + '.jpg' :
-            '',
+            res.Poster.replace(/.*?(\/[a-z0-9]*@).*/i, '$1') + '.jpg' : '',
         imdb_rating: res.imdbRating && res.imdbRating !== 'N/A' ?
-            Math.floor(parseInt(res.imdbRating) * 10) :
-            '',
+            Math.floor(parseInt(res.imdbRating) * 10) : '',
         imdb_vote: res.imdbVotes && res.imdbVotes !== 'N/A' ?
-            Math.floor(parseInt(res.imdbVotes.replace(/,/g, ''))) :
-            ''
+            Math.floor(parseInt(res.imdbVotes.replace(/,/g, ''))) : ''
     };
 }
 
@@ -626,23 +607,19 @@ function parseKP(r) {
             (res.name || (res.info && res.info.rus))
             .split('(')[0]
             .split('[')[0]
-            .trim() :
-            '',
+            .trim() : '',
         title_en: res.name_eng || (res.info && res.info.orig) ?
             (res.name_eng || (res.info && res.info.orig))
             .split('(')[0]
             .split('[')[0]
-            .trim() :
-            '',
+            .trim() : '',
         year: res.year || (res.info && res.info.year) ?
             ((res.year || (res.info && res.info.year)) + '')
             .split('-')[0]
-            .replace(/[^0-9]/g, '') :
-            '',
+            .replace(/[^0-9]/g, '') : '',
         type:
             (res.type && res.type === 'series') || (res.serial && res.serial === '1') ?
-            '1' :
-            '0',
+            '1' : '0',
         genre: (Array.isArray(res.genre) ?
             res.genre
             .map(function(v) {
@@ -667,8 +644,7 @@ function parseKP(r) {
             })
             .filter(function(g) {
                 return g && g !== 'зарубежные' && g !== 'зарубежный';
-            }) :
-            []
+            }) : []
         ).join(','),
         country: (Array.isArray(res.country) ?
             res.country.map(function(v) {
@@ -681,8 +657,7 @@ function parseKP(r) {
             res.info && res.info.country && typeof res.info.country === 'string' ?
             res.info.country.split(',').map(function(c) {
                 return c.trim();
-            }) :
-            []
+            }) : []
         ).join(','),
         actor: (res.actors ?
                 res.actors.map(function(v, i) {
@@ -691,8 +666,7 @@ function parseKP(r) {
                 res.info && res.info.actors && typeof res.info.actors === 'string' ?
                 res.info.actors.split(',').map(function(a, i) {
                     return i < 5 ? a.trim() : null;
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
@@ -703,42 +677,31 @@ function parseKP(r) {
                 res.info && res.info.director && typeof res.info.director === 'string' ?
                 res.info.director.split(',').map(function(d) {
                     return d.trim();
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
         description: res.description || (res.info && res.info.description) ?
-            res.description || (res.info && res.info.description) :
-            '',
+            res.description || (res.info && res.info.description) : '',
         poster: res.poster || (res.info && res.info.poster) ? '1' : '',
         kp_rating: res.kinopoisk ?
-            Math.floor(res.kinopoisk * 10) :
-            res.info && res.info.rating && res.info.rating.rating_kp ?
-            Math.floor(parseFloat(res.info.rating.rating_kp) * 10) :
-            '',
+            Math.floor(res.kinopoisk * 10) : res.info && res.info.rating && res.info.rating.rating_kp ?
+            Math.floor(parseFloat(res.info.rating.rating_kp) * 10) : '',
         kp_vote: res.info && res.info.rating && res.info.rating.vote_num_kp ?
-            parseInt(res.info.rating.vote_num_kp) :
-            '1000',
+            parseInt(res.info.rating.vote_num_kp) : '1000',
         imdb_rating: res.imdb ?
-            Math.floor(res.imdb * 10) :
-            res.info && res.info.rating && res.info.rating.rating_imdb ?
-            Math.floor(parseFloat(res.info.rating.rating_imdb) * 10) :
-            '',
+            Math.floor(res.imdb * 10) : res.info && res.info.rating && res.info.rating.rating_imdb ?
+            Math.floor(parseFloat(res.info.rating.rating_imdb) * 10) : '',
         imdb_vote: res.info && res.info.rating && res.info.rating.vote_num_imdb ?
-            parseInt(res.info.rating.vote_num_imdb) :
-            '1000',
+            parseInt(res.info.rating.vote_num_imdb) : '1000',
         translate: res.voiceActing && res.voiceActing[0] ?
             res.voiceActing.filter(function(voice) {
                 return !/(укр|eng)/i.test(voice);
-            })[0] :
-            res.translation ?
-            res.translation :
-            '',
+            })[0] : res.translation ?
+            res.translation : '',
         quality: res.quality ? res.quality : res.quality ? res.quality : '',
         premiere: res.premier ?
-            res.premier :
-            res.info && res.info.premiere ?
+            res.premier : res.info && res.info.premiere ?
             res.info.premiere
             .split(' ')
             .reverse()
@@ -759,8 +722,7 @@ function parseKP(r) {
                     .replace('декабря', '12')
                     .padStart(2, '0');
             })
-            .join('-') :
-            ''
+            .join('-') : ''
     };
 }
 
@@ -783,8 +745,7 @@ function parsePleer(r) {
                 return i <= 4 ? v : null;
             })
             .filter(Boolean)
-            .join(',') :
-            '',
+            .join(',') : '',
         director: res.directors ?
             res.directors
             .split(',')
@@ -792,8 +753,7 @@ function parsePleer(r) {
                 return i <= 2 ? v : null;
             })
             .filter(Boolean)
-            .join(',') :
-            '',
+            .join(',') : '',
         description: res.description ? res.description : '',
         poster: '1',
         pictures: res.pictures ? res.pictures : '',
@@ -814,36 +774,31 @@ function parseDouban(res) {
         genre: (res.genres ?
             res.genres.map(function(v) {
                 return v;
-            }) :
-            []
+            }) : []
         ).join(','),
         country: (res.countries ?
             res.countries.map(function(v) {
                 return v;
-            }) :
-            []
+            }) : []
         ).join(','),
         actor: (res.casts ?
                 res.casts.map(function(v, i) {
                     return i < 10 ? v.name : null;
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
         director: (res.directors ?
                 res.directors.map(function(v, i) {
                     return i < 10 ? v.name : null;
-                }) :
-                []
+                }) : []
             )
             .filter(Boolean)
             .join(','),
         description: res.summary ? res.summary : '',
         poster: res.images && res.images.medium ? res.images.medium : '',
         imdb_rating: res.rating && res.rating.average ?
-            Math.floor(res.rating.average * 10) :
-            '',
+            Math.floor(res.rating.average * 10) : '',
         imdb_vote: res.ratings_count ? Math.floor(res.ratings_count) : '',
         imdb_id: res.imdb_id ? res.imdb_id : '',
         premiere: res.premiere ? res.premiere : ''

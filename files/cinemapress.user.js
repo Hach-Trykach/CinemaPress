@@ -331,9 +331,9 @@ function parseData() {
                 src.src =
                     movieData.poster === '1' ?
                     '/files/poster/medium/' + kp_id + '.jpg' :
-                    /\/[0-9a-z]*\.(jpg|png)/i.test(movieData.poster) ?
+                    /\/[0-9a-z]*\.(jpg|png|webp)/i.test(movieData.poster) ?
                     '/files/poster/medium' + movieData.poster :
-                    /\/[0-9a-z@.,_\-]\.(jpg|png)/i.test(movieData.poster) ?
+                    /\/[0-9a-z@.,_\-]\.(jpg|png|webp)/i.test(movieData.poster) ?
                     '/files/poster/medium' + movieData.poster :
                     movieData.poster;
             }

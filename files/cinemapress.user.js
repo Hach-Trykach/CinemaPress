@@ -10,7 +10,7 @@
 // @supportURL https://github.com/hdrezkaby/CinemaPress/issues
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2021.01
+// @version 2023.02
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*

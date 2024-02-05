@@ -866,7 +866,7 @@ ip_install() {
         then
             exit 0
         else
-            git clone https://${GIT_SERVER}/CinemaPress/Theme-"${LOCAL_THEME}".git \
+            git clone https://${GIT_SERVER}/hdrezkaby/Theme-"${LOCAL_THEME}".git \
                 /var/"${LOCAL_THEME}" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
             mkdir -p /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
             cp -rf /var/"${LOCAL_THEME}"/* /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
@@ -876,7 +876,7 @@ ip_install() {
                 >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
         fi
     else
-        git clone https://${GIT_SERVER}/CinemaPress/Theme-"${LOCAL_THEME}".git \
+        git clone https://${GIT_SERVER}/hdrezkaby/Theme-"${LOCAL_THEME}".git \
             /var/"${LOCAL_THEME}" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
         mkdir -p /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
         cp -rf /var/"${LOCAL_THEME}"/* /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
@@ -2208,7 +2208,7 @@ docker_run() {
         cp -rf /home/"${CP_DOMAIN}"/config/production/modules.js /home/"${CP_DOMAIN}"/config/production/modules.prev.js
         cp -rf /home/"${CP_DOMAIN}"/config/production/config.js /home/"${CP_DOMAIN}"/config/production/config.backup.js
         cp -rf /home/"${CP_DOMAIN}"/config/production/modules.js /home/"${CP_DOMAIN}"/config/production/modules.backup.js
-        git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /var/${CP_THEME}
+        git clone https://${GIT_SERVER}/hdrezkaby/Theme-${CP_THEME}.git /var/${CP_THEME}
         mkdir -p /home/"${CP_DOMAIN}"/themes/${CP_THEME}/
         cp -rf /var/${CP_THEME}/* /home/"${CP_DOMAIN}"/themes/${CP_THEME}/
         node /home/"${CP_DOMAIN}"/optimal.js
